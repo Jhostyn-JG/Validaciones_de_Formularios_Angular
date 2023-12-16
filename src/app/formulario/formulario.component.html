@@ -1,0 +1,193 @@
+<!-- Agrega este enlace a tu archivo HTML para importar Font Awesome 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-d0VkvqGS3C6wNEeUbvEkifCxZ/S01o0Ob3m5l7OBnFMcaKuTp00H1NDu5c+km1Y+7SxnW9KwE6hCOE2I5/QyfA==" crossorigin="anonymous" />
+-->
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Formulario - Jhostyn G. -Laboratorio 2</h2>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="save($event)">
+            <!--Nombre Completo -->
+            <div class="form-group">
+                <label for="nombrecompleto">Nombre Completo<b class="red">*</b>:</label>
+                <div class="input-container">
+                    <input type="text" id="nombrecompleto" formControlName="nombrecompleto" placeholder="Nombre Completo">
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('nombrecompleto')?.valid && form.get('nombrecompleto')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('nombrecompleto')?.invalid && form.get('nombrecompleto')?.touched"></i>
+                    </div>
+                </div>
+                <div class="fondo" *ngIf="form.get('nombrecompleto')?.errors && form.get('nombrecompleto')?.touched">
+                    <small *ngIf="form.get('nombrecompleto')?.hasError('required')"> El campo Nombre Requerido</small>
+                    <small *ngIf="form.get('nombrecompleto')?.hasError('maxlength')"> El máximo deben ser 40 caracteres</small>
+                </div>
+            </div>
+
+
+            <div class="form-group-2">
+                <div class="input-container-2">
+                    <!-- Número de Cédula -->
+                    <label for="cedula">Número de Cédula<b class="red">*</b>:</label>
+                    <input type="number" id="cedula" formControlName="cedula" placeholder="Número de Cédula" min="0"
+                        step="1">
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('cedula')?.value && form.get('cedula')?.valid && form.get('cedula')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('cedula')?.invalid && form.get('cedula')?.touched"></i>
+                    </div>
+                    <div class="fondo" *ngIf="form.get('cedula')?.errors && form.get('cedula')?.touched">
+                        <small *ngIf="form.get('cedula')?.hasError('required')"> El campo Cédula Requerido. * </small>
+                        <small *ngIf="form.get('cedula')?.hasError('pattern') "> El valor máximo debe ser 10 caracteres.
+                            * </small>
+                        <small *ngIf="form.get('cedula')?.hasError('cedulaInvalida') "> La Cédula es Inválida o no es
+                            Ecuatoriana</small>
+                    </div>
+                </div>
+
+                <div class="input-container-2">
+                    <!-- Fecha de Nacimiento -->
+                    <label for="fechanacimiento">Fecha Nacimiento<b class="red">*</b>:</label>
+                    <input type="date" id="fechanacimiento" formControlName="fechanacimiento">
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('fechanacimiento')?.valid && form.get('fechanacimiento')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('fechanacimiento')?.invalid && form.get('fechanacimiento')?.touched"></i>
+                    </div>
+                    <div class="fondo" *ngIf="form.get('fechanacimiento')?.errors && form.get('fechanacimiento')?.touched">
+                        <small *ngIf="form.get('fechanacimiento')?.hasError('required')"> El campo Fecha Nacimiento
+                            Requerido</small>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Email-->
+            <div class="form-group">
+                <label for="email">Email<b class="red">*</b>:</label>
+                <div class="input-container">
+                    <input type="text" id="email" formControlName="email" placeholder="Correo Electronico">
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('email')?.valid && form.get('email')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('email')?.invalid && form.get('email')?.touched"></i>
+                    </div>
+                </div>
+                <div class="fondo" *ngIf="form.get('email')?.errors && form.get('email')?.touched">
+                    <small *ngIf="form.get('email')?.hasError('required')">El campo Email es Requerido</small>
+                    <small *ngIf="form.get('email')?.hasError('email')"> El Formato del Email no es Válido</small>
+                </div>
+            </div>
+
+            <!--Pais de Residencia -->
+            <div class="form-group">
+                <label for="paisresidencia"> País de residencia<b class="red">*</b>:</label>
+                <div class="input-container">
+                    <select formControlName="paisresidencia">
+                        <option value="" disabled selected>Seleccionar País</option>
+                        <option value="1">Ecuador</option>
+                        <option value="2">Colombia</option>
+                        <option value="3">Perú</option>
+                        <option value="4">Brazil</option>
+                        <option value="5">Bolivia</option>
+                        <option value="6">Uruguay</option>
+                        <option value="7">Argentina</option>
+                        <option value="8">Panáma</option>
+                        <option value="9">México</option>
+                    </select>
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('paisresidencia')?.valid && form.get('paisresidencia')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('paisresidencia')?.invalid && form.get('paisresidencia')?.touched"></i>
+                    </div>
+                </div>
+                <div class="fondo" *ngIf="form.get('paisresidencia')?.errors && form.get('paisresidencia')?.touched">
+                    <small *ngIf="form.get('paisresidencia')?.hasError('required')">El campo País Residencia es
+                        Requerido</small>
+                </div>
+            </div>
+
+            <!--Sexo-->
+            <div class="form-group">
+                <label for="sexo">Sexo<b class="red">*</b>:</label>
+                <div class="radio-container">
+                    <input type="radio" name="sexo" formControlName="sexo" value="male"> Hombre
+                    <input type="radio" name="sexo" formControlName="sexo" value="female"> Mujer
+                    <input type="radio" name="sexo" formControlName="sexo" value="other"> Otro
+                </div>
+                <div class="icon-container_radio">
+                    <i class="fas fa-check-circle check-icon"
+                        *ngIf="form.get('sexo')?.valid && form.get('sexo')?.touched"></i>
+                    <i class="fas fa-exclamation-circle warning-icon"
+                        *ngIf="form.get('sexo')?.invalid && form.get('sexo')?.touched"></i>
+                </div>
+                <div class="fondo" *ngIf="form.get('sexo')?.errors && form.get('sexo')?.touched">
+                    <small *ngIf="form.get('sexo')?.hasError('required')">Seleccionar Sexo es Requerido</small>
+                </div>
+            </div>
+
+            <!--Biografia -->
+            <div class="form-group">
+                <label for="biografia">Biografía<b class="red">*</b>:</label>
+                <div class="input-container">
+                    <textarea cols="30" rows="10" formControlName="biografia" placeholder="Escribir descripción"></textarea>
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('biografia')?.valid && form.get('biografia')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('biografia')?.invalid && form.get('biografia')?.touched"></i>
+                    </div>
+                    <small class="msg_Texto">Los Carácteres del texto son:
+                        {{this.form.get('biografia')?.value.length}}/1000</small>
+                </div>
+                <div class="fondo" *ngIf="form.get('biografia')?.errors && form.get('biografia')?.touched">
+                    <small *ngIf="form.get('biografia')?.hasError('required')">El campo Biografía es Requerido</small>
+                    <small *ngIf="form.get('biografia')?.hasError('minlength')"> El minimo deben ser 100 caracteres</small>
+                    <small *ngIf="form.get('biografia')?.hasError('maxlength')"> El maximo deben ser 1000 caracteres</small>
+                </div>
+            </div>
+
+            <!-- Acepto términos y condiciones -->
+            <div class="form-group">
+                <div class="input-container">
+                    <input type="checkbox" formControlName="termscondiciones">
+                    <b>Acepto los Términos y Condiciones <b class="red">*</b></b>
+                    <div class="icon-container">
+                        <i class="fas fa-check-circle check-icon"
+                            *ngIf="form.get('termscondiciones')?.valid && form.get('termscondiciones')?.touched"></i>
+                        <i class="fas fa-exclamation-circle warning-icon"
+                            *ngIf="form.get('termscondiciones')?.invalid && form.get('termscondiciones')?.touched"></i>
+                    </div>
+                </div>
+                <div class="fondo" *ngIf="form.get('termscondiciones')?.errors && form.get('termscondiciones')?.touched">
+                    <small *ngIf="form.get('termscondiciones')?.hasError('required')">Es un campo Requerido</small>
+                </div>
+            </div>
+
+
+            <!-- CaptChap  -->
+            <div class="form-group">
+                <div class="captcha-container">
+                    <ngx-recaptcha2 #captchaJG siteKey="6LcxCzEpAAAAAMwA5hSKx37nCg7ntGaMvpEuCPa6"
+                        formControlName="captcha"></ngx-recaptcha2>
+                </div>
+                <div class="fondo" *ngIf="form.get('captcha')?.errors && form.get('captcha')?.touched">
+                    <small *ngIf="form.get('captcha')?.hasError('required')">El captcha es requerido para continuar</small>
+                    <small *ngIf="form.get('captcha')?.value && form.get('captcha')?.hasError('invalidCaptcha')">El captcha
+                        no es válido</small>
+                </div>
+            </div>
+      
+
+            <button type="submit">Guardar</button>
+            <!--  [disabled]="form.invalid"-->
+        </form>
+    </div>
+</div>
