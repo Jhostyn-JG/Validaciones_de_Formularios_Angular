@@ -180,7 +180,7 @@
                 </div>
                 <div class="fondo" *ngIf="form.get('captcha')?.errors && form.get('captcha')?.touched">
                     <small *ngIf="form.get('captcha')?.hasError('required')">El captcha es requerido para continuar</small>
-                    <small *ngIf="form.get('captcha')?.value && form.get('captcha')?.hasError('invalidCaptcha')">El captcha
+                    <small *ngIf="form.get('captcha')?.value && form.get('captcha')?.hasError('invalidocp')">El captcha
                         no es válido</small>
                 </div>
             </div>

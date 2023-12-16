@@ -38,8 +38,8 @@ export class FormularioComponent implements OnInit {
 
   //Validacion de Captcha
   ValidarcaptCha(control: AbstractControl) {
-    const enteredCaptcha = control.value;
-    return enteredCaptcha ? null : { invalidCaptcha: true };
+    const veriCaptcha = control.value;
+    return veriCaptcha ? null : { invalidocp: true };
   }
   
 
