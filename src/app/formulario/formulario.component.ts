@@ -32,15 +32,10 @@ export class FormularioComponent implements OnInit {
       sexo: new FormControl('', [Validators.required]),
       biografia: new FormControl('', [Validators.required, Validators.maxLength(1000), Validators.minLength(100)]),
       termscondiciones: new FormControl('', [Validators.required]),
-      captcha: new FormControl('', [Validators.required, this.ValidarcaptCha])
+      captcha: new FormControl('', [Validators.required])
     });
   }
 
-  //Validacion de Captcha
-  ValidarcaptCha(control: AbstractControl) {
-    const veriCaptcha = control.value;
-    return veriCaptcha ? null : { invalidocp: true };
-  }
 
   //validacion de cedula Ecuatoriana 
   validacionIDEcuatoriana(control: AbstractControl) {
