@@ -10,30 +10,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
- 
- 
-  form:FormGroup;
 
-  constructor(private formBuilder:FormBuilder, private userService: UserService) {
+
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.buildForm();
     /*this.form.valueChanges.pipe(debounceTime(1000)).subscribe(value => {console.log(value);});*/
   }
   ngOnInit(): void {
 
-  }  
+  }
 
-  private buildForm(){
+  private buildForm() {
     this.form = this.formBuilder.group({
-      nombrecompleto: new FormControl('',[Validators.required, Validators.maxLength(40)]),/**Validators.pattern(/^\d{10}$/) */
-      cedula: new FormControl('',[Validators.required,Validators.pattern(/^\d{10}$/),this.validacionIDEcuatoriana]),
-      fechanacimiento: new FormControl('',[Validators.required]),
-      email: new FormControl('',[Validators.required, Validators.email]),
-      paisresidencia: new FormControl('',[Validators.required]),
-      sexo: new FormControl('',[Validators.required]),
-      biografia: new FormControl('',[Validators.required,Validators.maxLength(1000), Validators.minLength(100)]),
-      termscondiciones: new FormControl('',[Validators.required]),
-      captcha: new FormControl('',[Validators.required, this.ValidarcaptCha])
-    });    
+      nombrecompleto: new FormControl('', [Validators.required, Validators.maxLength(40)]),/**Validators.pattern(/^\d{10}$/) */
+      cedula: new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/), this.validacionIDEcuatoriana]),
+      fechanacimiento: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      paisresidencia: new FormControl('', [Validators.required]),
+      sexo: new FormControl('', [Validators.required]),
+      biografia: new FormControl('', [Validators.required, Validators.maxLength(1000), Validators.minLength(100)]),
+      termscondiciones: new FormControl('', [Validators.required]),
+      captcha: new FormControl('', [Validators.required, this.ValidarcaptCha])
+    });
   }
 
   //Validacion de Captcha
@@ -41,31 +41,30 @@ export class FormularioComponent implements OnInit {
     const veriCaptcha = control.value;
     return veriCaptcha ? null : { invalidocp: true };
   }
-  
 
   //validacion de cedula Ecuatoriana 
   validacionIDEcuatoriana(control: AbstractControl) {
     const cedula = control.value.toString(); // Convertir a cadena
-    
+
     const Ncedula = cedula.length;
-    
+
     if (Ncedula !== 10) {
       return { 'cedulaInvalida': true };
     } else {
       let suma = 0;
       const verif = parseInt(cedula.charAt(9), 10);
-    
+
       for (let i = 0; i < 9; i++) {
         let digito = parseInt(cedula.charAt(i), 10);
-    
+
         if (i % 2 === 0) {
           digito *= 2;
-    
+
           if (digito > 9) {
             digito -= 9;
           }
         }
-    
+
         suma += digito;
       }
       const resultado = 10 - (suma % 10);
@@ -76,9 +75,9 @@ export class FormularioComponent implements OnInit {
       }
     }
   }
-  
+
   //Metodo Funcional de Guardado en Bases de Datos
- save(event: Event) {
+  save(event: Event) {
     event.preventDefault();
     if (this.form.valid) {
       const value = this.form.value;

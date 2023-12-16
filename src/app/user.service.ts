@@ -10,12 +10,12 @@ export class UserService {
 
   private apiUrl = 'http://localhost:3000'; // URL de tu servidor
 
-  constructor(private http: HttpClient) {}
-/*
-  saveUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/guardarUsuario`, user);
-  }*/
- 
+  constructor(private http: HttpClient) { }
+  /*
+    saveUser(user: any): Observable<any> {
+      return this.http.post(`${this.apiUrl}/guardarUsuario`, user);
+    }*/
+
   saveUser(userData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/guardarUsuario`, userData, { responseType: 'text' }).pipe(
       catchError((error: any) => {
@@ -23,5 +23,5 @@ export class UserService {
       })
     );
   }
-  
+
 }

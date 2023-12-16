@@ -13,7 +13,8 @@
             <div class="form-group">
                 <label for="nombrecompleto">Nombre Completo<b class="red">*</b>:</label>
                 <div class="input-container">
-                    <input type="text" id="nombrecompleto" formControlName="nombrecompleto" placeholder="Nombre Completo">
+                    <input type="text" id="nombrecompleto" formControlName="nombrecompleto"
+                        placeholder="Nombre Completo">
                     <div class="icon-container">
                         <i class="fas fa-check-circle check-icon"
                             *ngIf="form.get('nombrecompleto')?.valid && form.get('nombrecompleto')?.touched"></i>
@@ -23,7 +24,8 @@
                 </div>
                 <div class="fondo" *ngIf="form.get('nombrecompleto')?.errors && form.get('nombrecompleto')?.touched">
                     <small *ngIf="form.get('nombrecompleto')?.hasError('required')"> El campo Nombre Requerido</small>
-                    <small *ngIf="form.get('nombrecompleto')?.hasError('maxlength')"> El máximo deben ser 40 caracteres</small>
+                    <small *ngIf="form.get('nombrecompleto')?.hasError('maxlength')"> El máximo deben ser 40
+                        caracteres</small>
                 </div>
             </div>
 
@@ -59,7 +61,8 @@
                         <i class="fas fa-exclamation-circle warning-icon"
                             *ngIf="form.get('fechanacimiento')?.invalid && form.get('fechanacimiento')?.touched"></i>
                     </div>
-                    <div class="fondo" *ngIf="form.get('fechanacimiento')?.errors && form.get('fechanacimiento')?.touched">
+                    <div class="fondo"
+                        *ngIf="form.get('fechanacimiento')?.errors && form.get('fechanacimiento')?.touched">
                         <small *ngIf="form.get('fechanacimiento')?.hasError('required')"> El campo Fecha Nacimiento
                             Requerido</small>
                     </div>
@@ -137,7 +140,8 @@
             <div class="form-group">
                 <label for="biografia">Biografía<b class="red">*</b>:</label>
                 <div class="input-container">
-                    <textarea cols="30" rows="10" formControlName="biografia" placeholder="Escribir descripción"></textarea>
+                    <textarea cols="30" rows="10" formControlName="biografia"
+                        placeholder="Escribir descripción"></textarea>
                     <div class="icon-container">
                         <i class="fas fa-check-circle check-icon"
                             *ngIf="form.get('biografia')?.valid && form.get('biografia')?.touched"></i>
@@ -149,8 +153,10 @@
                 </div>
                 <div class="fondo" *ngIf="form.get('biografia')?.errors && form.get('biografia')?.touched">
                     <small *ngIf="form.get('biografia')?.hasError('required')">El campo Biografía es Requerido</small>
-                    <small *ngIf="form.get('biografia')?.hasError('minlength')"> El minimo deben ser 100 caracteres</small>
-                    <small *ngIf="form.get('biografia')?.hasError('maxlength')"> El maximo deben ser 1000 caracteres</small>
+                    <small *ngIf="form.get('biografia')?.hasError('minlength')"> El minimo deben ser 100
+                        caracteres</small>
+                    <small *ngIf="form.get('biografia')?.hasError('maxlength')"> El maximo deben ser 1000
+                        caracteres</small>
                 </div>
             </div>
 
@@ -166,7 +172,8 @@
                             *ngIf="form.get('termscondiciones')?.invalid && form.get('termscondiciones')?.touched"></i>
                     </div>
                 </div>
-                <div class="fondo" *ngIf="form.get('termscondiciones')?.errors && form.get('termscondiciones')?.touched">
+                <div class="fondo"
+                    *ngIf="form.get('termscondiciones')?.errors && form.get('termscondiciones')?.touched">
                     <small *ngIf="form.get('termscondiciones')?.hasError('required')">Es un campo Requerido</small>
                 </div>
             </div>
@@ -179,12 +186,13 @@
                         formControlName="captcha"></ngx-recaptcha2>
                 </div>
                 <div class="fondo" *ngIf="form.get('captcha')?.errors && form.get('captcha')?.touched">
-                    <small *ngIf="form.get('captcha')?.hasError('required')">El captcha es requerido para continuar</small>
+                    <small *ngIf="form.get('captcha')?.hasError('required')">El captcha es requerido para
+                        continuar</small>
                     <small *ngIf="form.get('captcha')?.value && form.get('captcha')?.hasError('invalidocp')">El captcha
                         no es válido</small>
                 </div>
             </div>
-      
+
 
             <button type="submit">Guardar</button>
             <!--  [disabled]="form.invalid"-->
